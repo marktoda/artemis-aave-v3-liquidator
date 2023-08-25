@@ -1,13 +1,12 @@
 [package]
-name = "uniswapx-artemis"
+name = "aave-v3-liquidator"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-uniswapx-rs = { path = "./crates/uniswapx-rs" }
-bindings-uniswapx = { path = "./crates/bindings-uniswapx" }
+bindings-aave = { path = "./crates/bindings-aave" }
 
 artemis-core = { git = "https://github.com/paradigmxyz/artemis"}
 ethers = { version = "2", features = ["ws", "rustls"]}
@@ -29,3 +28,5 @@ alloy-primitives = "0.2.0"
 serde_qs = "0.12.0"
 async-stream = "0.3.5"
 mockito = "1.1.0"
+serde_json = "1.0.105"
+ethers-contract = "2.0.9"

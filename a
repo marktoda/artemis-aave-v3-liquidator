@@ -1,0 +1,32 @@
+[2m2023-08-25T07:18:41.360061Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m syncing state
+[2m2023-08-25T07:18:41.360132Z[0m [32m INFO[0m [2martemis_core::engine[0m[2m:[0m starting executor... 
+[2m2023-08-25T07:18:42.218923Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m all_tokens: [TokenData { symbol: "WETH", token_address: 0x4200000000000000000000000000000000000006 }, TokenData { symbol: "cbETH", token_address: 0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22 }, TokenData { symbol: "USDbC", token_address: 0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca }]
+[2m2023-08-25T07:18:42.882701Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m read state cache from file
+[2m2023-08-25T07:18:43.241826Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m Updating state from block 3078910 to 3079287
+[2m2023-08-25T07:18:43.969188Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m done syncing state
+[2m2023-08-25T07:18:43.969407Z[0m [32m INFO[0m [2martemis_core::engine[0m[2m:[0m starting strategy... 
+[2m2023-08-25T07:18:43.969482Z[0m [32m INFO[0m [2martemis_core::engine[0m[2m:[0m starting collector... 
+[2m2023-08-25T07:18:43.970789Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m received new tick: NewTick { timestamp: 1692947923 }
+[2m2023-08-25T07:18:44.266365Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m Updating state from block 3079287 to 3079288
+[2m2023-08-25T07:18:44.784327Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m Total borrower count: 847
+[2m2023-08-25T07:18:53.141575Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m Found underwater borrower Borrower { address: 0x0b4b31400ff6cf937fd6a6ff0bea19bf08dca920, collateral: {0x4200000000000000000000000000000000000006}, debt: {0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca} } -  healthFactor: 996390996148186126
+[2m2023-08-25T07:19:11.509922Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m Found underwater borrower Borrower { address: 0xfca19390524e8e0a138a0aa81d7a151a69aee98f, collateral: {0x4200000000000000000000000000000000000006}, debt: {0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca} } -  healthFactor: 996624460367963233
+[2m2023-08-25T07:19:15.186127Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m Found underwater borrower Borrower { address: 0xa5561a5ace69f7f9a8c94c5120c50cc0f888e2ed, collateral: {0x4200000000000000000000000000000000000006}, debt: {0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca} } -  healthFactor: 996346783604568912
+[2m2023-08-25T07:19:18.466841Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m Found underwater borrower Borrower { address: 0x3868cf961195f92f1ea29f4ab5025c3177a7f329, collateral: {0x4200000000000000000000000000000000000006}, debt: {0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca} } -  healthFactor: 997082059060011630
+[2m2023-08-25T07:19:21.926390Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m Found 4 underwater borrowers
+[2m2023-08-25T07:19:22.463763Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m collateral reserve: (654470439573891, 0, 0, 0, 0, 0, 3980022893142467708068081, 0, true)
+[2m2023-08-25T07:19:22.463863Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m debt to cover: 9010990000
+[2m2023-08-25T07:19:22.987657Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m max collateral to liquidate: 57246231692
+[2m2023-08-25T07:19:23.589661Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m collateral reserve: (210790327424213, 0, 0, 0, 0, 0, 3980022893142467708068081, 0, true)
+[2m2023-08-25T07:19:23.589769Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m debt to cover: 2902110000
+[2m2023-08-25T07:19:23.995832Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m max collateral to liquidate: 18436915528
+[2m2023-08-25T07:19:24.343344Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m collateral reserve: (149673085916969, 0, 0, 0, 0, 0, 3980022893142467708068081, 0, true)
+[2m2023-08-25T07:19:24.343455Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m debt to cover: 2060180000
+[2m2023-08-25T07:19:24.817828Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m max collateral to liquidate: 13088189156
+[2m2023-08-25T07:19:25.321566Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m collateral reserve: (19009740303246, 0, 0, 0, 0, 0, 3980022893142467708068081, 0, true)
+[2m2023-08-25T07:19:25.321676Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m debt to cover: 261540000
+[2m2023-08-25T07:19:25.738380Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m max collateral to liquidate: 1661546560
+[2m2023-08-25T07:19:43.971526Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m received new tick: NewTick { timestamp: 1692947983 }
+[2m2023-08-25T07:19:44.270800Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m Updating state from block 3079288 to 3079318
+[2m2023-08-25T07:19:44.715127Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m Total borrower count: 847
+[2m2023-08-25T07:19:52.666505Z[0m [32m INFO[0m [2maave_v3_liquidator::strategies::aave_strategy[0m[2m:[0m Found underwater borrower Borrower { address: 0x0b4b31400ff6cf937fd6a6ff0bea19bf08dca920, collateral: {0x4200000000000000000000000000000000000006}, debt: {0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca} } -  healthFactor: 996390996148186126
