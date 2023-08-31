@@ -4,7 +4,7 @@ use std::str::FromStr;
 
 use artemis_core::engine::Engine;
 use artemis_core::types::{CollectorMap, ExecutorMap};
-use collectors::{block_collector::BlockCollector, time_collector::TimeCollector};
+use collectors::time_collector::TimeCollector;
 use ethers::{
     prelude::MiddlewareBuilder,
     providers::{Http, Provider},
@@ -13,7 +13,7 @@ use ethers::{
 use executors::protect_executor::ProtectExecutor;
 use std::sync::Arc;
 use strategies::{
-    aave_strategy::AaveStrategy,
+    aave_strategy::{AaveStrategy, Deployment},
     types::{Action, Config, Event},
 };
 use tracing::{info, Level};
@@ -23,10 +23,8 @@ pub mod collectors;
 pub mod executors;
 pub mod strategies;
 
-static POLL_INTERVAL_SECS: u64 = 60;
+static POLL_INTERVAL_SECS: u64 = 60 * 5;
 pub const CHAIN_ID: u64 = 8453;
-
-const MEV_BLOCKER: &str = "https://rpc.mevblocker.io/noreverts";
 
 /// CLI Options.
 #[derive(Parser, Debug)]
@@ -42,6 +40,12 @@ pub struct Args {
     /// Percentage of profit to pay in gas.
     #[arg(long)]
     pub bid_percentage: u64,
+
+    #[arg(long)]
+    pub deployment: Deployment,
+
+    #[arg(long)]
+    pub liquidator_address: String,
 }
 
 #[tokio::main]
@@ -57,13 +61,11 @@ async fn main() -> Result<()> {
         .init();
 
     let args = Args::parse();
+    println!("{:?}", args);
 
     // Set up ethers provider.
     let rpc = Http::from_str(&args.rpc)?;
     let provider = Provider::new(rpc);
-
-    let mevblocker_provider =
-        Provider::<Http>::try_from(MEV_BLOCKER).expect("could not instantiate HTTP Provider");
 
     let wallet: LocalWallet = args
         .private_key
@@ -73,19 +75,9 @@ async fn main() -> Result<()> {
     let address = wallet.address();
 
     let provider = Arc::new(provider.nonce_manager(address).with_signer(wallet.clone()));
-    let mevblocker_provider = Arc::new(
-        mevblocker_provider
-            .nonce_manager(address)
-            .with_signer(wallet),
-    );
 
     // Set up engine.
     let mut engine: Engine<Event, Action> = Engine::default();
-
-    // Set up block collector.
-    // let block_collector = Box::new(BlockCollector::new(provider.clone()));
-    // let block_collector = CollectorMap::new(block_collector, Event::NewBlock);
-    // engine.add_collector(Box::new(block_collector));
 
     // Set up time collector.
     let time_collector = Box::new(TimeCollector::new(POLL_INTERVAL_SECS));
@@ -94,15 +86,18 @@ async fn main() -> Result<()> {
 
     let config = Config {
         bid_percentage: args.bid_percentage,
+        chain_id: CHAIN_ID,
     };
 
-    let strategy = AaveStrategy::new(Arc::new(provider.clone()), config);
+    let strategy = AaveStrategy::new(
+        Arc::new(provider.clone()),
+        config,
+        args.deployment,
+        args.liquidator_address,
+    );
     engine.add_strategy(Box::new(strategy));
 
-    let executor = Box::new(ProtectExecutor::new(
-        provider.clone(),
-        mevblocker_provider.clone(),
-    ));
+    let executor = Box::new(ProtectExecutor::new(provider.clone(), provider.clone()));
 
     let executor = ExecutorMap::new(executor, |action| match action {
         Action::SubmitTx(tx) => Some(tx),

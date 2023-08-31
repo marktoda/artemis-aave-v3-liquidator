@@ -22,6 +22,7 @@ dependencies = [
  "async-stream",
  "async-trait",
  "bindings-aave",
+ "bindings-liquidator",
  "clap",
  "crossbeam",
  "crossbeam-channel",
@@ -29,6 +30,7 @@ dependencies = [
  "ethers",
  "ethers-contract",
  "futures",
+ "hex",
  "mockito",
  "phyllo",
  "reqwest",
@@ -402,6 +404,13 @@ dependencies = [
 
 [[package]]
 name = "bindings-aave"
+version = "0.1.0"
+dependencies = [
+ "ethers",
+]
+
+[[package]]
+name = "bindings-liquidator"
 version = "0.1.0"
 dependencies = [
  "ethers",
